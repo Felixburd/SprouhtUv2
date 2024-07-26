@@ -1,0 +1,107 @@
+{% schema %}
+{
+  "name": "Pricing Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Choose your Plan"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Select the best option for your growth journey"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pricing Block",
+      "category": "Pricing"
+    }
+  ]
+}
+{% endschema %}
+
+{{ 'pricing-block.css' | asset_url | stylesheet_tag }}
+
+<div class="pricing-section">
+  <div class="pricing-header">
+    <h2 class="pricing-title">{{ section.settings.title }}</h2>
+    <p class="pricing-subheading">{{ section.settings.subheading }}</p>
+  </div>
+
+  <div class="pricing-container">
+    <div class="toggle-switch">
+      <input type="radio" name="toggle" id="monthly" checked>
+      <label for="monthly" class="toggle-label">Monthly</label>
+      <input type="radio" name="toggle" id="yearly">
+      <label for="yearly" class="toggle-label">Yearly <span class="save">SAVE 15%</span></label>
+      <div class="toggle-slider"></div>
+    </div>
+  </div>
+
+<div class="pricingwrap">
+  <div class="pricingblock monthly-plan">
+    <div class="seal-wrapper">
+      {% for product in collections['all'].products %}
+        {% if product.type == 'subscription' and product.title == 'Sprouht U - Monthly' %}
+          {% if product.available %}
+            {% form 'product', product %}
+              <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+              <button type="submit" class="btn">Subscribe Monthly</button>
+            {% endform %}
+          {% else %}
+            <button class="btn" disabled>Sold Out</button>
+          {% endif %}
+          {% break %}
+        {% endif %}
+      {% else %}
+        <p>Monthly subscription product not found</p>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="pricingblock yearly-plan" style="display: none;">
+    <div class="seal-wrapper">
+      {% for product in collections['all'].products %}
+        {% if product.type == 'subscription' and product.title == 'Sprouht U - Annual' %}
+          {% if product.available %}
+            {% form 'product', product %}
+              <input type="hidden" name="id" value="{{ product.first_available_variant.id }}">
+              <button type="submit" class="btn">Subscribe Yearly</button>
+            {% endform %}
+          {% else %}
+            <button class="btn" disabled>Sold Out</button>
+          {% endif %}
+          {% break %}
+        {% endif %}
+      {% else %}
+        <p>Yearly subscription product not found</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const monthlyInput = document.getElementById('monthly');
+    const yearlyInput = document.getElementById('yearly');
+    const monthlyPlan = document.querySelector('.monthly-plan');
+    const yearlyPlan = document.querySelector('.yearly-plan');
+    
+    monthlyInput.addEventListener('change', updatePricing);
+    yearlyInput.addEventListener('change', updatePricing);
+
+    function updatePricing() {
+      if (monthlyInput.checked) {
+        monthlyPlan.style.display = 'block';
+        yearlyPlan.style.display = 'none';
+      } else if (yearlyInput.checked) {
+        monthlyPlan.style.display = 'none';
+        yearlyPlan.style.display = 'block';
+      }
+    }
+  });
+</script>

@@ -1,0 +1,110 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "sprouhtu",
+    "theme_author": "Felix Burt",
+    "theme_version": "1.2.2",
+    "theme_documentation_url": "https://www.sprouht.com/about",
+    "theme_support_email": "felixburt@gmail.com"
+  },
+  {
+    "name": "Seo Settings",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon Image",
+        "info": "Will be scaled down to 32x32px"
+      },
+      {
+        "type": "image_picker",
+        "id": "apple_touch_icon",
+        "label": "Apple touch icon image",
+        "info": "Will be scaled down to 120x120px"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter_link",
+        "label": "Twitter Link"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_product_rich_snippets",
+        "label": "Enable Product Rich Snippets",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_article_rich_snippets",
+        "label": "Enable Article Rich Snippets",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Colors Settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_grey_light",
+        "label": "Color grey light",
+        "default": "#e0e0e0"
+      },
+      {
+        "type": "color",
+        "id": "color_brand_green",
+        "label": "Color brand green",
+        "default": "#006838"
+      },
+      {
+        "type": "color",
+        "id": "color_black",
+        "label": "Color black",
+        "default": "#2c2b2b"
+      },
+      {
+        "type": "color",
+        "id": "color_light_green",
+        "label": "Color light green",
+        "default": "#62b88f"
+      },
+      {
+        "type": "color",
+        "id": "color_darkgrey",
+        "label": "Color darkgrey",
+        "default": "#b9b9b9"
+      },
+      {
+        "type": "color",
+        "id": "color_dark_green",
+        "label": "Color dark green",
+        "default": "#275d44"
+      },
+      {
+        "type": "color",
+        "id": "color_midgreen",
+        "label": "Color midgreen",
+        "default": "#3f755c"
+      }
+    ]
+  },
+  {
+    "name": "Products Collection Settings",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "collection_home",
+        "label": "Collection Home"
+      },
+      {
+        "type": "range",
+        "id": "collection_home_limit",
+        "label": "Collection Home limit",
+        "min": 1,
+        "max": 50, 
+        "step": 1,
+        "default": 3
+      }
+    ]
+  }
+]

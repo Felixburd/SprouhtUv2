@@ -1,0 +1,25 @@
+
+<div class="cart-page">
+  <h1>Your Cart</h1>
+  <form action="/cart" method="post" novalidate class="cart">
+    <div class="cart__items">
+      {% for item in cart.items %}
+        <div class="cart__item">
+          <div class="cart__item__image">
+            <img src="{{ item.image | img_url: 'medium' }}" alt="{{ item.title }}">
+          </div>
+          <div class="cart__item__details">
+            <h2>{{ item.title }}</h2>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Price: {{ item.price | money }}</p>
+            <a href="/cart/change?line={{ forloop.index }}&quantity=0" class="cart__remove">Remove</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="cart__total">
+      <h2>Total: {{ cart.total_price | money }}</h2>
+      <a href="/checkout" class="btn btn--checkout">Proceed to Checkout</a>
+    </div>
+  </form>
+</div>

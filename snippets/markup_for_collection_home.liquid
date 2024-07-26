@@ -1,0 +1,99 @@
+{% capture listItems %}
+{% for item in collections[settings.collection_home].products limit: settings.collection_home_limit %}
+<div role="listitem" class="floater-large clean w-dyn-item">
+          <div class="w-layout-hflex productheader">
+            <div class="text-vert right">
+              <h1 class="heading-10 green large">{{ item.title }}</h1>
+            </div>
+          </div>
+          <div class="text-vert right product">
+            <div class="subheading1 large right">{{ item.metafields.udesly['tier-description'] }}</div>
+            <div class="div-block-10">
+              <div class="subheading1 large right bold">{{ item.metafields.udesly['tier-box'] }}</div>
+            </div>
+            <div class="line"></div>
+            <div class="checklist">
+              <div class="checkmarks"><img src="{{ 'checkmark.png' | asset_url }}" loading="lazy" alt="" class="image-10"></div>
+              <div class="checkmarks-text">
+                <div class="text-block-2">{{ item.metafields.udesly['bullet-point-1'] }}</div>
+              </div>
+            </div>
+            <div class="checklist">
+              <div class="checkmarks"><img src="{{ 'checkmark.png' | asset_url }}" loading="lazy" alt="" class="image-13"></div>
+              <div class="checkmarks-text">
+                <div class="text-block-2">{{ item.metafields.udesly['bullet-point-2'] }}</div>
+              </div>
+            </div>
+            <div class="checklist">
+              <div class="checkmarks"><img src="{{ 'checkmark.png' | asset_url }}" loading="lazy" alt="" class="image-14"></div>
+              <div class="checkmarks-text">
+                <div class="text-block-2">{{ item.metafields.udesly['bullet-point-3'] }}</div>
+              </div>
+            </div>
+            <div class="checklist">
+              <div class="checkmarks"><img src="{{ 'checkmark.png' | asset_url }}" loading="lazy" alt="" class="image-15"></div>
+              <div class="checkmarks-text">
+                <div class="text-block-2">{{ item.metafields.udesly['bullet-point-4'] }}</div>
+              </div>
+            </div>
+            <div class="checklist">
+              <div class="checkmarks"><img src="{{ 'checkmark.png' | asset_url }}" loading="lazy" alt="" class="image-16"></div>
+              <div class="checkmarks-text">
+                <div class="text-block-2">{{ item.metafields.udesly['bullet-point-5'] }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="w-layout-hflex productheader">
+            <div class="text-vert left full">
+              <h1 data-commerce-type="variation-price" class="heading-10 green">{{ item.price | money }}</h1>
+              <div class="subheading1 left">Monthly</div>
+            </div>
+          </div>
+          <div class="form-block-3 w-form">
+            {%- assign condition_value = item.title | strip -%}{%- if condition_value == "Mastery" -%}{%- form "contact",  class: "former klaviyo-form growthd" -%}<label for="email-9" class="field-label">Email Address<span class="text-span-6">*</span></label><input class="text-field w-input" maxlength="256" name="contact[email]" data-name="email" placeholder="" type="email" id="email-10" required="">
+              <div class="input-wrap"><label for="Phone" class="field-label">Phone Number</label><input ms-code-phone-number="ca,gb,us" class="text-field w-input" maxlength="256" name="contact[phone_number]" data-name="phone_number" placeholder="" type="tel" id="phone_number-6"></div><label for="first_name-8" class="field-label">Name<span class="text-span-6">*</span></label>
+              <div class="w-layout-hflex names"><input class="text-field right w-input" maxlength="256" name="contact[first_name]" data-name="first_name" placeholder="First" type="text" id="first_name-9" required=""><input class="text-field left w-input" maxlength="256" name="contact[last_name]" data-name="last_name" placeholder="Last" type="text" id="last_name-7" required=""></div><input type="submit" data-wait="Please wait..." class="button filler w-button" value="Join Now">
+            {%- assign form_success = form.posted_successfully? -%}{%- assign form_errors = form.errors -%}{%- render "form-general-script", form_success: form_success, form_errors: form_errors -%}{%- endform -%}{%- endif -%}
+            <div class="w-form-done  {% if form_success %}form-posted-successfully{% endif %}">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            {%- unless form_success -%}<div class="w-form-fail  {% if form.errors %}form-has-errors{% endif %}">
+              <div>{%- render "form-errors", form_errors: form_errors -%}</div>
+            </div>{%- endunless -%}
+          </div>
+          <div class="form-block-3 w-form">
+            {%- assign condition_value = item.title | strip -%}{%- if condition_value == "Growth" -%}{%- form "contact",  class: "former klaviyo-form growthd" -%}<label for="email-9" class="field-label">Email Address<span class="text-span-6">*</span></label><input class="text-field w-input" maxlength="256" name="contact[email]" data-name="email" placeholder="" type="email" id="email-12" required="">
+              <div class="input-wrap"><label for="Phone" class="field-label">Phone Number</label><input ms-code-phone-number="ca,gb,us" class="text-field w-input" maxlength="256" name="contact[phone_number]" data-name="phone_number" placeholder="" type="tel" id="phone_number-7"></div><label for="first_name-8" class="field-label">Name<span class="text-span-6">*</span></label>
+              <div class="w-layout-hflex names"><input class="text-field right w-input" maxlength="256" name="contact[first_name]" data-name="first_name" placeholder="First" type="text" id="first_name-10" required=""><input class="text-field left w-input" maxlength="256" name="contact[last_name]" data-name="last_name" placeholder="Last" type="text" id="last_name-8" required=""></div><input type="submit" data-wait="Please wait..." class="button filler w-button" value="Join Now">
+            {%- assign form_success = form.posted_successfully? -%}{%- assign form_errors = form.errors -%}{%- render "form-general-script", form_success: form_success, form_errors: form_errors -%}{%- endform -%}{%- endif -%}
+            <div class="w-form-done  {% if form_success %}form-posted-successfully{% endif %}">
+              <div>Thank you! Your submission has been received!</div>
+            </div>
+            {%- unless form_success -%}<div class="w-form-fail  {% if form.errors %}form-has-errors{% endif %}">
+              <div>{%- render "form-errors", form_errors: form_errors -%}</div>
+            </div>{%- endunless -%}
+          </div>
+          <div id="Button" class="buttoninfo">
+            <div>
+              {%- form "product", item, data-node-type: "commerce-add-to-cart-form", class: "w-commerce-commerceaddtocartform" -%}{%- unless item.has_only_default_variant or product.variants.size == 1 -%}<div data-node-type="add-to-cart-option-list" position-id="8a6f2dc7-7d35-53ab-7a74-7c11a66f0aea" template-part-bind="8a6f2dc7-7d35-53ab-7a74-7c11a66f0aea">{%- for option in item.options_with_values -%}<fieldset data-node-type="add-to-cart-option" template-part-bind="8a6f2dc7-7d35-53ab-7a74-7c11a66f0aeb" style="{% if item.has_only_default_variant or product.variants.size == 1 %}display: none; {% endif %}"><label data-node-type="add-to-cart-option-label" template-part-bind="8a6f2dc7-7d35-53ab-7a74-7c11a66f0aec">{{ option.name }}</label><select data-node-type="add-to-cart-option-select" class="w-select" style="display: none;" name="{{ "option" | append: forloop.index }}">{%- render "product-options", option: option -%}</select><div data-node-type="add-to-cart-option-pill-group" class="w-commerce-commerceaddtocartoptionpillgroup" aria-label="{{ "option" | append: forloop.index  }}">{%- for value in option.values -%}<div data-node-type="add-to-cart-option-pill" class="w-commerce-commerceaddtocartoptionpill" data-option-name="{{ value | handle }}"><div data-node-type="block" template-part-bind="8a6f2dc7-7d35-53ab-7a74-7c11a66f0af0">{{ value }}</div></div>{%- endfor -%}</div></fieldset>{%- endfor -%}</div>{%- endunless -%}{%- assign condition_value = item.type | strip -%}{%- unless condition_value == "e348fd487d0102946c9179d2a94bb613" -%}<label for="quantity-32ac1c452b3d808ef30565e8b99d66f9" position-id="8a6f2dc7-7d35-53ab-7a74-7c11a66f0af1">Quantity</label>{%- endunless -%}<input data-loading-text="Adding to cart..." data-node-type="commerce-add-to-cart-button" class="w-commerce-commerceaddtocartbutton button filler" style="display:none" aria-haspopup="dialog" type="submit" aria-busy="false" position-id="8a6f2dc7-7d35-53ab-7a74-7c11a66f0af4" value="Add to Cart">{%- render "product-variants-data" product: item -%}{%- endform -%}
+              <div style="display:none" class="w-commerce-commerceaddtocartoutofstock" tabindex="0">
+                <div>This product is out of stock.</div>
+              </div>
+              <div aria-live="assertive" data-node-type="commerce-add-to-cart-error" style="display:none" class="w-commerce-commerceaddtocarterror">
+                <div data-node-type="commerce-add-to-cart-error" data-w-add-to-cart-quantity-error="Product is not available in this quantity." data-w-add-to-cart-general-error="Something went wrong when adding this item to the cart." data-w-add-to-cart-mixed-cart-error="You can’t purchase another product with a subscription." data-w-add-to-cart-buy-now-error="Something went wrong when trying to purchase this item." data-w-add-to-cart-checkout-disabled-error="Checkout is disabled on this site." data-w-add-to-cart-select-all-options-error="Please select an option in each set.">Product is not available in this quantity.</div>
+              </div>
+            </div>
+            <p class="paragraph scarcetext">{{ item.metafields.udesly['below-price-box'] }}</p>
+          </div>
+        </div>
+{%- endfor -%}
+{% endcapture %}
+{% assign items_length = listItems | strip | size %}
+<div class="collection-list-wrapper-copy w-dyn-list" udy-collection="product">
+      {%- unless items_length == 0 -%}<div role="list" class="collection-list-copy w-dyn-items">
+        {{ listItems }}
+      </div>{%- endunless -%}
+      {%- if items_length == 0 -%}<div class="w-dyn-empty">
+        <div>No items found.</div>
+      </div>{%- endif -%}
+    </div>

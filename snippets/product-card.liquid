@@ -1,0 +1,26 @@
+<div class="w-layout-hflex productheader">
+  <div class="text-vert right">
+    <h1 class="heading-10 green large">{{ product.title | remove: 'Sprouht U - ' }}</h1>
+  </div>
+</div>
+<div class="text-vert right product">
+  <div class="subheading1 large right">{{ product.description }}</div>
+  <div class="line"></div>
+  {% for feature in product.metafields.custom.features.value %}
+    <div class="checklist">
+      <div class="checkmarks"><img src="{{ 'checkmark.png' | asset_url }}" loading="lazy" alt="" class="image-10"></div>
+      <div class="checkmarks-text">
+        <div class="text-block-2">{{ feature }}</div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<div class="w-layout-hflex productheader">
+  <div class="text-vert left full">
+    <h1 class="heading-10 green">{{ product.price | money }}</h1>
+    <div class="subheading1 left">{% if product.title contains 'Monthly' %}Monthly{% else %}Yearly{% endif %}</div>
+  </div>
+</div>
+<div id="Button" class="buttoninfo">
+  <div class="sealsubs-target-element sls-homepage-automatic" data-handle="{{ product.handle }}" data-product-id="{{ product.id }}"></div>
+</div>

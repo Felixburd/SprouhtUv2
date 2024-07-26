@@ -1,0 +1,31 @@
+{% capture listItems %}
+{% paginate blogs['module3'].articles by 999 %}
+{%- assign allItems = blogs['module3'].articles -%}
+{%- for item in allItems  -%}
+                <div role="listitem" class="collection-item-2 w-dyn-item" custom-sort-field="{{ item.metafields.udesly['class'] }}">
+              <div id="List" class="modulelesson"></div>
+              <a href="https://sprouhtu.com/#pricing" class="link-block-8 w-inline-block">
+                <div class="coursetitles">
+                  <div class="modulelesson-marker">
+                    <div class="subheading1 right white">{{ item.metafields.udesly['class'] }}</div>
+                  </div>
+                  <div class="modulelesson-time">
+                    <div class="subheading1 right white">{{ item.metafields.udesly['class-length'] }}</div>
+                  </div>
+                  <div class="lessontitle">{{ item.metafields.udesly['class-title'] }}</div>
+                </div>
+              </a>
+            </div>
+{%- endfor -%}
+{% endpaginate %}
+{% endcapture %}
+{% assign items_length = listItems | strip | size %}
+
+<div class="modulelist w-dyn-list" udy-collection="module3">
+          {%- unless items_length == 0 -%}<div role="list" class="collection-list-3 w-dyn-items" custom-sort="{&quot;reverse&quot;:false,&quot;type&quot;:&quot;PlainText&quot;}">
+            {{ listItems }}
+          </div>{%- endunless -%}
+          {%- if items_length == 0 -%}<div class="w-dyn-empty">
+            <div>No items found.</div>
+          </div>{%- endif -%}
+        </div>
